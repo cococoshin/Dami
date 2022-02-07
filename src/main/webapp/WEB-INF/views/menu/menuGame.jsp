@@ -43,7 +43,7 @@
 <body>
 <center>
 	<h1><%= username %>님의 새로운 단골집을 찾아드립니다.</h1> <br><br>
-	<form action="likeAddServlet" method="get">
+	<form action="likeAdd" method="get">
 		<button type="submit" name="food1" style="border:none;" value="<%= menu1 %>"><img src="images/menuImages/<%=menu1 %>.jpg" align = "center" width = "300" height = "400"></button>
 		VS
 		<button type="submit" name="food1" style="border:none;" value="<%= menu2 %>"><img src="images/meWnuImages/<%= menu2 %>.jpg" align = "center" width = "300" height = "400"></button>

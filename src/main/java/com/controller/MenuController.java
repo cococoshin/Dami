@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dto.LikeDTO;
 import com.dto.MemberDTO;
+import com.dto.MenuDTO;
 import com.dto.RestaurantDTO;
 import com.service.LikeService;
 import com.service.MemberService;
@@ -174,4 +175,41 @@ public class MenuController {
 		
 		return "menuResult";
 	} // end
+	
+	@RequestMapping(value = "/loginCheck/likeAdd")
+	public String likeAdd(@RequestParam("food1") String food1, HttpSession session, Model model) {
+		//1. 로그인처리 부분입니다.			
+				MemberDTO dto = (MemberDTO)session.getAttribute("login");
+				String nextPage = null;			
+			
+				MenuDTO selection = service.selectedMenu(food1);				
+				
+				//4. 이제 가져온 정보를 LikeDTO에 저장할 것입니다.
+				//	 LikeDTO는 likes유저에 생성되는 고객아이디를 딴 테이블의 컬럼들과 
+				//	 동일한 변수를 가지고 있습니다. (즉,LikeDTO = 고객취향 테이블과 같습니다.)
+				//5. MenuDTO객체에 가져온 정보들을 각각의 변수에 넣습니다. 
+				//   userid는 food유저의 menu테이블에 없으므로 login 세션에서 가져옵니다. 
+				String userid = dto.getUserid(); //Userid 파싱		
+				String genre = selection.getGenre();
+				String estyle = selection.getEstyle();
+				String texture = selection.getTexture();
+				String taste = selection.getTaste();
+				String sauce = selection.getSauce();
+				String spice = selection.getSpice();
+				String carbo = selection.getCarbo();
+				String meat = selection.getMeat();
+				String fat = selection.getFat();
+				String vegi = selection.getVegi();
+				
+				//6. 각변수를 likeDTO에 저장합니다. 	
+				LikeDTO like = new LikeDTO(userid, genre, estyle, texture,
+						taste, sauce, spice, carbo, meat, fat, vegi);			
+				System.out.println(like);
+				service2.insertSelect(like);
+				
+				
+	return "redirect: ../loginCheck/menuGame";
+} // end
+	
+	
 }

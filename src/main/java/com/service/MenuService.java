@@ -30,7 +30,11 @@ public class MenuService {
 		int n = dao.memberUpdate(dto);
 		return n;
 	}
-
+	
+	public MenuDTO selectedMenu(String food1) {
+		MenuDTO dto = dao.selectedMenu(food1);
+		return dto;
+	}
 
 	
 	

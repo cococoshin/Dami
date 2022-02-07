@@ -89,7 +89,10 @@ public class LikeService {
 		return list;
 	}
 	
-	
+	public void insertSelect(LikeDTO like) {
+		dao.insertSelect(like);
+		
+	}
 	
 	
 	

@@ -49,11 +49,11 @@
 <center>
 	 <div class="button-3" >
     <div class="eff-2"></div>
-    <a href="menuGameServlet">취향 선택 Go!</a>
+    <a href="menuGame">취향 선택 Go!</a>
  	 </div>
 	 <div class="button-1" >
     <div class="eff-1"></div>
-    <a href="MenuResultServlet">결과 더보기</a>
+    <a href="MenuResult">결과 더보기</a>
   </div>
  <div class="button-2" >
     <div class="eff-2"></div>

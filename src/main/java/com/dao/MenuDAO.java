@@ -29,7 +29,10 @@ public class MenuDAO {
 		return n;
 	}
 	
-	
+	public MenuDTO selectedMenu(String food1) {
+		MenuDTO dto = template.selectOne("MenuMapper.selectedMenu", food1);
+		return dto;
+	}
 	
 	
 	

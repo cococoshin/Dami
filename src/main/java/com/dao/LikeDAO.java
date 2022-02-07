@@ -79,7 +79,9 @@ public class LikeDAO {
 		return list;
 	}
 	
-	
+	public void insertSelect(LikeDTO like) {
+		template.insert("LikeMapper.insertSelect", like);
+	}
 	
 	
 	

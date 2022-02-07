@@ -14,10 +14,10 @@
 <a href="MyPageServlet">mypage</a>
 </div>
   <div style="position: absolute; top:10px; left: 80%;">
-<a href="menuGameServlet">취향조사</a>
+<a href="menuGame">취향조사</a>
 </div>
   <div style="position: absolute; top:30px; left: 80%;">
-<a href="MenuResultServlet">결과보기</a>
+<a href="MenuResult">결과보기</a>
 </div>
 
 
