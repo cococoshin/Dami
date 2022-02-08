@@ -46,12 +46,12 @@
 	<form action="likeAdd" method="get">
 		<button type="submit" name="food1" style="border:none;" value="<%= menu1 %>"><img src="images/menuImages/<%=menu1 %>.jpg" align = "center" width = "300" height = "400"></button>
 		VS
-		<button type="submit" name="food1" style="border:none;" value="<%= menu2 %>"><img src="images/meWnuImages/<%= menu2 %>.jpg" align = "center" width = "300" height = "400"></button>
+		<button type="submit" name="food1" style="border:none;" value="<%= menu2 %>"><img src="images/menuImages/<%= menu2 %>.jpg" align = "center" width = "300" height = "400"></button>
 	</form> <br>
 	<div id="container">
 	 <div class="button-1" >
     <div class="eff-1"></div>
-    <a href="MenuResult">결과 페이지로 이동</a>
+    <a href="loginCheck/MenuResult">결과 페이지로 이동</a>
   </div> <space>
 <!-- 	<div class="button-1">
 	<button type="button" onclick="location.href='main.jsp'">돌아가기</button> <br>

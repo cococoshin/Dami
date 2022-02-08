@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.LikeDTO;
 import com.dto.MemberDTO;
@@ -33,7 +34,7 @@ public class MenuController {
 	
 	
 	@RequestMapping(value = "/loginCheck/menuGame")
-	public String login(HttpSession session, Model model) {
+	public String login(HttpSession session, Model model,RedirectAttributes ra) {		
 		// 1. 세션을 통한 로그인 처리입니다.
 		System.out.println("loginCheck/menuGameloginCheck/menuGameloginCheck\n\n");
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
@@ -81,20 +82,29 @@ public class MenuController {
 
 			// 6. 이 두개의 리스트를 request하여 menuGame.jsp로 포워드하여 넘길것 입니다.
 			// else부분은 비로그인시 로그인을 요청하여 cover.jsp로 다시 되돌아가게 합니다.
-			model.addAttribute("list", list);
-			model.addAttribute("list2", list2);
+			ra.addFlashAttribute("list", list);
+			ra.addFlashAttribute("list2", list2);
 
-			nextPage = "menuGame";
+			nextPage = "redirect:../menuGame";
+
+		
+			/* else문 추후수정필요 
+			 * 
+			 * 
+			 * 
+			 * */
 		} else {
-			nextPage = "cover.jsp"; // 추후수정 필요 @@@
+			nextPage = "cover.jsp"; 
 			model.addAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}
 
 		return nextPage;
 	} // end
 
+	
+	
 	@RequestMapping(value = "/loginCheck/MenuResult")
-	public String MenuResult(HttpSession session, Model model) {
+	public String MenuResult(HttpSession session, Model model, RedirectAttributes ra) {
 		System.out.println("\n\n\n\n\nMenuResultServletMenuResultServlet\n\n\n\n");
 		// 1. 세션을 통한 로그인 처리
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
@@ -136,7 +146,7 @@ public class MenuController {
 		// 일치하는 메뉴가 여러종류가 있을 수 있기에 List<String>으로 결과를 받습니다.
 		if (genre == null) {
 			System.out.println("if");
-			model.addAttribute("menuR", null);
+			ra.addFlashAttribute("menuR", null);
 
 		}
 		if (genre != null) {
@@ -148,13 +158,13 @@ public class MenuController {
 			if (menuR1Z.size() != 0) {
 				System.out.println("R1F" + menuR1Z);
 				Collections.shuffle(menuR1Z);
-				model.addAttribute("menuR", menuR1Z);
+				ra.addFlashAttribute("menuR", menuR1Z);
 
 				// 10개 일치하는 메뉴가 없으면 2개일치하는 값이 있는지 확인합니다.
 			} else if (menuR1Z.size() == 0 && menuR9AGZ.size() != 0) {
 				System.out.println("menuR9AG서블릿" + menuR9AGZ);
 				Collections.shuffle(menuR9AGZ);
-				model.addAttribute("menuR", menuR9AGZ);
+				ra.addFlashAttribute("menuR", menuR9AGZ);
 
 				// 2개 일치하는 값이 없으면 1개 일치하는 값이 있는지 확인합니다.
 				// 일치하는 값이 있는순간 forward해서 main.jsp로 값을 보내줍니다.
@@ -162,19 +172,13 @@ public class MenuController {
 			} else if (menuR9AGZ.size() == 0) {
 				System.out.println("menuR10A" + menuR10AZ);
 				Collections.shuffle(menuR10AZ);
-				model.addAttribute("menuR", menuR10AZ);
+				ra.addFlashAttribute("menuR", menuR10AZ);
 			} // 내부if end
 		} // 외부if end
-
-		
-		
-
-		
-		
-		
-		
-		return "menuResult";
+		return "redirect:../menuResult";
 	} // end
+	
+	
 	
 	@RequestMapping(value = "/loginCheck/likeAdd")
 	public String likeAdd(@RequestParam("food1") String food1, HttpSession session, Model model) {

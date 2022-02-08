@@ -118,7 +118,28 @@
 		</dependency>  
 		
 		
-				<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<!-- 메일발송 라이브러리추가-->
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.4.7</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
+		
+		
+		
+		
+		
+		
+		
+		
+				
+				
+				
 <dependency><!-- 이거필요 -->
     <groupId>org.mybatis</groupId>
     <artifactId>mybatis</artifactId>
@@ -167,6 +188,9 @@
     <version>2.8.8</version>
 </dependency>
 		<!-- JSON/Ajax end -->		
+		
+		
+		
 		
 		
 		      

@@ -44,20 +44,20 @@
 <div class="image">
 <h1><%= username %>님께 추천드리는 메뉴는 <%= menuFinal %>입니다</h1>
 <br>
-<img src="images/menuImages/<%= menuImage %>.jpg" align = "center" width = "300" height = "400"><br><br>
+<img src="images/menuImages/<%=menuImage%>.jpg" align = "center" width = "300" height = "400"><br><br>
 </div>
 <center>
 	 <div class="button-3" >
     <div class="eff-2"></div>
-    <a href="menuGame">취향 선택 Go!</a>
+    <a href="loginCheck/menuGame">취향 선택 Go!</a>
  	 </div>
 	 <div class="button-1" >
     <div class="eff-1"></div>
-    <a href="MenuResult">결과 더보기</a>
+    <a href="loginCheck/MenuResult">결과 더보기</a>
   </div>
  <div class="button-2" >
     <div class="eff-2"></div>
-    <a href="main.jsp"> 돌아가기</a>
+    <a href="main"> 돌아가기</a> <!-- 02/08 수정완료 : 이신영 -->
   </div><br>
   </center>
 

@@ -24,6 +24,16 @@ public class MemberDAO {
 		int n = template.insert("MemberMapper.insert", dto);
 		return n;
 	}
+
+	public String idSearch(MemberDTO dto) {
+		String userid = template.selectOne("MemberMapper.idSearch", dto);
+		return userid;
+	}
+
+	public String pwSearch(MemberDTO dto) {
+		String passwd = template.selectOne("MemberMapper.pwSearch", dto);
+		return passwd;
+	}
 	
 	
 	

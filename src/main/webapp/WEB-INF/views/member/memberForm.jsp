@@ -103,7 +103,7 @@
     	   	
     	
     	
-        function openIdChk(){
+        function openIdChk(){ //중복검사 
         	window.name="parentForm";
 //        	window.open("member/IdCheckForm.jsp","chkForm", "width=500, height=300"); 
         	window.open("IdCheckForm","chkForm", "width=500, height=300"); 
