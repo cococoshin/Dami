@@ -144,10 +144,11 @@ public class MenuController {
 
 		// 뒤에 Z자를 붙여서 값을 받아올 list를 생성했습니다.
 		// 일치하는 메뉴가 여러종류가 있을 수 있기에 List<String>으로 결과를 받습니다.
+			List <String> menuR = null;//1		
 		if (genre == null) {
-			System.out.println("if");
-			ra.addFlashAttribute("menuR", null);
-
+			System.out.println("if");				
+			ra.addFlashAttribute("menuR", menuR);//2
+			
 		}
 		if (genre != null) {
 			List<String> menuR1Z = service2.getMenuR1(menuR1);
@@ -155,16 +156,19 @@ public class MenuController {
 			List<String> menuR10AZ = service2.menuR10A(genre);
 
 			// 일단 10개일치 부터 확인합니다.
+			
+			
+			
 			if (menuR1Z.size() != 0) {
 				System.out.println("R1F" + menuR1Z);
 				Collections.shuffle(menuR1Z);
-				ra.addFlashAttribute("menuR", menuR1Z);
+				menuR = menuR1Z;
 
 				// 10개 일치하는 메뉴가 없으면 2개일치하는 값이 있는지 확인합니다.
 			} else if (menuR1Z.size() == 0 && menuR9AGZ.size() != 0) {
 				System.out.println("menuR9AG서블릿" + menuR9AGZ);
 				Collections.shuffle(menuR9AGZ);
-				ra.addFlashAttribute("menuR", menuR9AGZ);
+				menuR = menuR9AGZ;
 
 				// 2개 일치하는 값이 없으면 1개 일치하는 값이 있는지 확인합니다.
 				// 일치하는 값이 있는순간 forward해서 main.jsp로 값을 보내줍니다.
@@ -172,8 +176,18 @@ public class MenuController {
 			} else if (menuR9AGZ.size() == 0) {
 				System.out.println("menuR10A" + menuR10AZ);
 				Collections.shuffle(menuR10AZ);
-				ra.addFlashAttribute("menuR", menuR10AZ);
+				menuR = menuR10AZ;				
 			} // 내부if end
+			System.out.println("메뉴결과"+menuR);
+			String menuFinal = menuR.get(0);
+			System.out.println("메뉴결과0번: "+menuFinal);
+			String menuImage = service.getMenuImage(menuFinal);
+			System.out.println("메뉴이미지: "+menuImage);
+			ra.addFlashAttribute("menuFinal", menuFinal);
+			ra.addFlashAttribute("menuImage", menuImage);
+
+			
+			
 		} // 외부if end
 		return "redirect:../menuResult";
 	} // end

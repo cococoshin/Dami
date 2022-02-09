@@ -36,6 +36,11 @@ public class MenuService {
 		return dto;
 	}
 
+	public String getMenuImage(String menuFinal) {
+		String menuImage = dao.getMenuImage(menuFinal);
+		return menuImage;
+	}
+
 	
 	
 	

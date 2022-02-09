@@ -12,25 +12,16 @@
 	//2. 이것이 null일때는 menuFinal에 준비중으로 담기게 했습니다.
 	if(dto != null){
 		String username = dto.getUsername();		
-		List <String> menuR = (List<String>)request.getAttribute("menuR");
+		String menuFinal = (String)request.getAttribute("menuFinal");			
+		String menuImage = (String)request.getAttribute("menuImage");		
 		
-		System.out.println("check");
-		System.out.println(menuR==null);
-		
-		System.out.println("selected: "+ menuR);	
-		String menuFinal = null;
-		String menuImage = null;		
-		if(menuR==null){ 
+		System.out.println("menuFinalJSP" + menuFinal);
+		System.out.println("menuImageJSP" + menuImage);
+
+	
+		if(menuFinal==null){ 
 			 menuFinal = "준비 중";	}
-		else if(menuR!=null){
-	//3. 결과버튼을 눌러서 값이 생성되면 menuR의 배열중 첫번째것을 선택하여 menuFinal변수에 담습니다.
-	//4. 아래 출력페이지에서 menuFinal변수에 담긴 메뉴를 추천해 주게 됩니다. 
-	// 	 이때 결과 버튼을 다시 누르면 list에 담긴 메뉴가 여러개면 랜덤하게 MenuSelect 서블릿에서 받아오기 때문에 그중 하나를 바꿔가며 추천해줍니다.
-				String menu = menuR.get(0);
-				menuFinal = menu;
-//				MenuService service = new MenuService();	
-//				menuImage = service.getMenuImage(menuFinal); 
-			}
+		
 			
 %>
 

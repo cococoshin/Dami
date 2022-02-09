@@ -33,6 +33,11 @@ public class MenuDAO {
 		MenuDTO dto = template.selectOne("MenuMapper.selectedMenu", food1);
 		return dto;
 	}
+
+	public String getMenuImage(String menuFinal) {
+		String menuImage = template.selectOne("MenuMapper.getMenuImage",menuFinal);
+		return menuImage;
+	}
 	
 	
 	
