@@ -60,7 +60,7 @@ alert("<%=mesg2%>");
 				<input type="password" required="required" name="passwd" id="passwd">
 				<label>Password</label>
 			</div>
-			<div class="pass-link">Forgot <a href="IdSearchUIServlet">ID</a> / <a href="PwSearchUIServlet">password?</a></div>		
+			<div class="pass-link">Forgot <a href="IdSearchUI">ID</a> / <a href="PwSearchUI">password?</a></div>		
 			<div class="field">
 				<input type="submit" value="login">				 
 			</div>

@@ -93,7 +93,13 @@ public class LikeService {
 		dao.insertSelect(like);
 		
 	}
-	
+
+	public List<LikeDTO> selectLike(String userid) {
+		List<LikeDTO> likeList = dao.selectLike(userid);
+		return likeList;
+	}
+
+
 	
 	
 	

@@ -24,15 +24,23 @@ public class MenuDAO {
 		return list;
 	}
 
-	public int memberUpdate(MemberDTO dto) {
-		int n = template.update("MemberMapper.update", dto);
-		return n;
-	}
+	
 	
 	public MenuDTO selectedMenu(String food1) {
 		MenuDTO dto = template.selectOne("MenuMapper.selectedMenu", food1);
 		return dto;
 	}
+
+	public List<String> resRecommend(List<String> menuRecommend) {
+		List<String> resRecommendList = template.selectList("MenuMapper.resRecommend", menuRecommend);
+		return resRecommendList;
+	}
+
+	public String resRecommend(String menuName) {
+		String resRecommend = template.selectOne("MenuMapper.resNameRecommend", menuName);
+		return resRecommend;
+	}
+
 	
 	
 	

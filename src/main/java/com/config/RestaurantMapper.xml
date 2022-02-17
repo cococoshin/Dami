@@ -19,8 +19,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="resList" parameterType="string" resultType="RestaurantDTO">
 	select restaurant, phone1, phone2, phone3, addr1, addr2,
-				  image 
+				  image, mood 
 	from restaurant
 	</select>
+	
+	<select id="resRecommend" parameterType="list" resultType="RestaurantDTO">
+   select * from restaurant where restaurant in
+   <foreach collection="list" item = "item" index="index" open="(" separator="," close=")">
+   #{item}
+   </foreach>
+   </select>
+	
+	<select id="recommendResList" parameterType="string" resultType="RestaurantDTO">
+   select * from restaurant where restaurant = #{resRecommend}
+   </select>
 	
 </mapper>

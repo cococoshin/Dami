@@ -2,9 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.dto.MemberDTO"%>
 <%@page import="com.dto.MenuDTO"%>
+<%@page import="com.dto.RestaurantDTO"%>
 
 <%@page import="java.util.List"%>
 <%@page import="com.service.MenuService"%>
+
+<style> /* 이거 왜 css적용이안돼지..???;;;; */
+.restaurantTable{
+	margin : auto;
+    width : 80%;
+}
+</style>
+
 
 <%
 	MemberDTO dto = (MemberDTO)session.getAttribute("login");
@@ -13,6 +22,20 @@
 	if(dto != null){
 		String username = dto.getUsername();		
 		List <String> menuR = (List<String>)request.getAttribute("menuR");
+		
+		
+		
+		
+		List<RestaurantDTO> recommendResList = (List<RestaurantDTO>) request.getAttribute("recommendResList");
+		System.out.println("\nrecommendResList"+recommendResList+"\nrecommendResList");
+	
+		
+		
+		
+		
+		
+		
+		
 		
 		System.out.println("check");
 		System.out.println(menuR==null);
@@ -41,23 +64,83 @@
 <title>나의 맛슐랭. 틀린 입맛은 없어</title>
 </head>
 <body>
+
+<!-- menu추천 -->
 <div class="image">
 <h1><%= username %>님께 추천드리는 메뉴는 <%= menuFinal %>입니다</h1>
 <br>
-<img src="images/menuImages/<%= menuImage %>.jpg" align = "center" width = "300" height = "400"><br><br>
+<img src="images/menuImages/<%=menuImage%>.jpg" align = "center" width = "300" height = "400"><br><br>
 </div>
+
+
+
+<!-- restaurant추천 -->
+<div class="image">
+<h1><%= menuFinal %>, 맛보실 수 있는 식당입니다</h1>
+<br>
+</div>
+
+
+	<%
+	int i = 0;
+	for(RestaurantDTO rdto : recommendResList){
+	//dto 정보 변수선언
+ 	String rRestaurant = rdto.getRestaurant();
+	String rPhone1 = rdto.getPhone1();
+	String rPhone2 = rdto.getPhone2();
+	String rAddr1 = rdto.getAddr1();
+	String rAddr2 = rdto.getAddr2();
+	String rImage = rdto.getImage();
+	i += 1;
+
+%>
+			<table class = restaurantTable>
+				<tr>
+					<td align="center">
+						<a href = "?restaurant=<%=rRestaurant%>"><!-- 이미지 클릭시 상세페이지로 이동 -->
+							<div class="scale"><img src = "images/resImages/<%=rImage%>.jpg" width="200" height="300" class="image">
+							</div>
+						</a>
+<!-- 					</td>
+					<td width="15">검색결과별 폭 조정
+					</td> -->
+				</tr>
+				<tr>
+					<td align="center">
+						<a class = "aReview" href = "?restaurant=<%=rRestaurant%>"><%=rRestaurant %></a><!-- 상세페이지로 이동 -->
+					</td>
+				</tr>
+			</table>
+		<%
+			if(i%5==0){ //메뉴를 5개 보여주면 줄을 바꿈
+		%>
+		<tr>
+			<td height="10">
+		</tr>
+		<%
+			}//end if
+		%>
+<%
+}//end for
+%>
+
+<br>
+
+
+
+
 <center>
 	 <div class="button-3" >
     <div class="eff-2"></div>
-    <a href="menuGame">취향 선택 Go!</a>
+    <a href="loginCheck/menuGame">취향 선택 Go!</a>
  	 </div>
 	 <div class="button-1" >
     <div class="eff-1"></div>
-    <a href="MenuResult">결과 더보기</a>
+    <a href="loginCheck/MenuResult">결과 더보기</a>
   </div>
  <div class="button-2" >
     <div class="eff-2"></div>
-    <a href="main.jsp"> 돌아가기</a>
+    <a href="main"> 돌아가기</a> <!-- 02/08 수정완료 : 이신영 -->
   </div><br>
   </center>
 

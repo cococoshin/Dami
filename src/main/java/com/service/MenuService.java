@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +27,23 @@ public class MenuService {
 		return list;
 	}
 
-	public int memberUpdate(MemberDTO dto) {
-		int n = dao.memberUpdate(dto);
-		return n;
-	}
-	
 	public MenuDTO selectedMenu(String food1) {
 		MenuDTO dto = dao.selectedMenu(food1);
 		return dto;
 	}
+
+	public List<String> resRecommend(List<String> menuRecommend) {
+		List<String> resRecommendList = dao.resRecommend(menuRecommend);
+		return resRecommendList;
+	}
+
+	public String resRecommend(String menuName) {
+		String resRecommend = dao.resRecommend(menuName); 
+		return resRecommend;
+	}
+
+
+	
 
 	
 	

@@ -24,6 +24,16 @@ public class RestaurantService {
 		List<RestaurantDTO> list = dao.resSearch(search);
 		return list;
 	}
+
+	public List<RestaurantDTO> resRecommend(List<String> resRecommendList) {
+		List<RestaurantDTO> resRecommend = dao.resRecommend(resRecommendList);
+		return resRecommend;
+	}
+
+	public List<RestaurantDTO> resRecommend(String resRecommend) {
+		List<RestaurantDTO>recommendResList = dao.resRecommend(resRecommend);
+		return recommendResList;
+	}
 	
 	
 	

@@ -14,10 +14,16 @@
 	<mvc:view-controller path="/" view-name="first"/>
 	<mvc:view-controller path="/loginForm" view-name="loginForm"/>
 	<mvc:view-controller path="/searchResult" view-name="searchResult"/>
+	
+	<mvc:view-controller path="/menuGame" view-name="menuGame"/>
+	<mvc:view-controller path="/menuResult" view-name="menuResult"/>
+	
 	<mvc:view-controller path="/myPage" view-name="myPage"/>
 	<mvc:view-controller path="/memberForm" view-name="memberForm"/>
 	<mvc:view-controller path="/IdCheckForm" view-name="member/IdCheckForm"/> <!-- 자식창 open -->
 	<mvc:view-controller path="/emailCheckForm" view-name="member/emailCheckForm"/> <!-- 자식창 open -->
+	<mvc:view-controller path="IdSearchUI" view-name="idSearch"/> 
+	<mvc:view-controller path="PwSearchUI" view-name="pwSearch"/> 
 	
 
 	<mvc:resources location="/WEB-INF/views/css/" mapping="/css/**"/>

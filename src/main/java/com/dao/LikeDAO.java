@@ -82,7 +82,13 @@ public class LikeDAO {
 	public void insertSelect(LikeDTO like) {
 		template.insert("LikeMapper.insertSelect", like);
 	}
-	
+
+	public List<LikeDTO> selectLike(String userid) {
+		List<LikeDTO> listLike = template.selectList("LikeMapper.selectLike", userid);
+		return listLike;
+	}
+
+
 	
 	
 	

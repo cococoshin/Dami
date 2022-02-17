@@ -11,11 +11,22 @@ public class RestaurantDTO {
 	String addr1;
 	String addr2;
 	String image;
-
-	@Override
-	public String toString() {
-		return "RestaurantDTO [restaurant=" + restaurant + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3="
-				+ phone3 + ", addr1=" + addr1 + ", addr2=" + addr2 + ", image=" + image + "]";
+	String mood;
+	
+	public RestaurantDTO() {
+		super();
+	}
+	public RestaurantDTO(String restaurant, String phone1, String phone2, String phone3, String addr1, String addr2,
+			String image, String mood) {
+		super();
+		this.restaurant = restaurant;
+		this.phone1 = phone1;
+		this.phone2 = phone2;
+		this.phone3 = phone3;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.image = image;
+		this.mood = mood;
 	}
 	public String getRestaurant() {
 		return restaurant;
@@ -59,20 +70,20 @@ public class RestaurantDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public RestaurantDTO(String restaurant, String phone1, String phone2, String phone3, String addr1, String addr2,
-			String image) {
-		super();
-		this.restaurant = restaurant;
-		this.phone1 = phone1;
-		this.phone2 = phone2;
-		this.phone3 = phone3;
-		this.addr1 = addr1;
-		this.addr2 = addr2;
-		this.image = image;
+	public String getMood() {
+		return mood;
 	}
-	public RestaurantDTO() {
-		super();
+	public void setMood(String mood) {
+		this.mood = mood;
 	}
+	@Override
+	public String toString() {
+		return "RestaurantDTO [restaurant=" + restaurant + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3="
+				+ phone3 + ", addr1=" + addr1 + ", addr2=" + addr2 + ", image=" + image + ", mood=" + mood + "]";
+	}
+
+
+	
 
 	
 	

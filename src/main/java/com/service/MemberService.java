@@ -24,8 +24,28 @@ public class MemberService {
 		int n = dao.insert(dto);
 		return n;
 	}
+
+
+	public String idSearch(MemberDTO dto) {
+		String userid = dao.idSearch(dto);
+		return userid;
+	}
+
+	public String pwSearch(MemberDTO dto) {
+		String passwd = dao.pwSearch(dto);
+		return passwd;
+	}
 	
-	
+	public int memberUpdate(MemberDTO dto) {
+		int n = dao.memberUpdate(dto);
+		return n;
+	}
+
+
+	public int newPw(Map<String, String> map) {
+		int n = dao.newPw(map);
+		return n;
+	}
 	
 	
 	

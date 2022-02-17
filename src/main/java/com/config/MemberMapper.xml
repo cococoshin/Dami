@@ -11,12 +11,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id = "idSearch" parameterType="MemberDTO" resultType="string">
 	select userid from member where username=#{username}
 	and phone = #{phone}
+	and email1 = #{email1}
+	and email2 = #{email2}
 	</select>
 
 	<select id = "pwSearch" parameterType="MemberDTO" resultType="string">
 	select passwd from member where userid=#{userid}
 	and username=#{username}
 	and phone = #{phone}
+	and email1 = #{email1}
+	and email2 = #{email2}
 	</select>
 	
 	<select id="mypage" parameterType="string" resultType="MemberDTO">
@@ -36,6 +40,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      email2 = #{email2}
     where userid = #{userid}
 	</update>
+	
+	
+	
+	
+	
+	
+	<update id="newPw" parameterType="hashmap" >
+	  update member
+     set passwd = #{passwd}
+
+    where userid = #{userid}
+	</update>
+	
+	
+	
+	
+	
+	
+	
 	
 	<insert id="insert" parameterType="MemberDTO">
      insert into member (userid,passwd,username,post,addr1,addr2,

@@ -10,6 +10,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      values( #{restaurant},#{menu},#{genre},#{estyle},#{texture},#{taste},
               #{sauce},#{spice},#{carbo},#{meat},#{fat},#{vegi},#{image})
    </insert>
+   
+   <select id="resRecommend" parameterType="list" resultType="string">
+   select restaurant from menu where menu in
+   <foreach collection="list" item = "item" index="index" open="(" separator="," close=")">
+   #{item}
+   </foreach>
+   </select>
+   
+    <select id="resNameRecommend" parameterType="string" resultType="string">
+   select restaurant from menu where menu = #{menuName}
+   </select>
+   
+   
       
    	<select id="menuList" parameterType ="String" resultType="String">
 	select image from menu

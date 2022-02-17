@@ -25,6 +25,8 @@
 
     <section class="home">
     <!-- 컨텐츠 들어갈 부분 ~ !!!! -->
+        <jsp:include page="Restaurant/resRecommend.jsp" flush="true"></jsp:include>
+        <jsp:include page="Restaurant/resMoodList.jsp" flush="true"></jsp:include>
         <jsp:include page="Restaurant/resList.jsp" flush="true"></jsp:include>
     </section>
 

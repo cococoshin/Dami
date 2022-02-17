@@ -46,7 +46,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="loginCheck/resRecommend">
                             <i class='bx bx-bell icon'></i>
                             <span class="text nav-text">근처맛집찾기</span>
                         </a>

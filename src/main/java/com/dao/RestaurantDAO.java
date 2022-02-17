@@ -23,6 +23,16 @@ public class RestaurantDAO {
 		List<RestaurantDTO> list = template.selectList("RestaurantMapper.resSearch", search);
 		return list;
 	}
+
+	public List<RestaurantDTO> resRecommend(List<String> resRecommendList) {
+		List<RestaurantDTO> resRecommend = template.selectList("RestaurantMapper.resRecommend", resRecommendList);
+		return resRecommend;
+	}
+
+	public List<RestaurantDTO> resRecommend(String resRecommend) {
+		List<RestaurantDTO>recommendResList = template.selectList("RestaurantMapper.recommendResList", resRecommend);
+		return recommendResList;
+	}
 	
 	
 	
