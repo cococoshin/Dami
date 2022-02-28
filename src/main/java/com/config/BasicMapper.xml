@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicMapper">
+   <select id= "login" parameterType="hashmap"  resultType="UserDTO">
+     select * from userchat where userid = #{userID} and USERPASSWORD = #{userPassword}  
+	</select>
+	
+	<insert id="register" parameterType="UserDTO">
+     insert into userchat (userID,userPassword,userName,userAge,userGender,userEmail,userProfile)
+     values( #{userID},#{userPassword},#{userName},${userAge},#{userGender},#{userEmail},null)
+   </insert>
+   <update id="update" parameterType="UserDTO">   
+     UPDATE userchat set userPassword = #{userPassword}, userName=#{userName}, userAge=${userAge}, 
+     userGender=#{userGender}, userEmail=#{userEmail} where userID = #{userID}
+   </update>
+     <update id="profile" parameterType="hashmap">   
+     UPDATE userchat set userProfile = #{fileName} where userID = #{userID}
+   </update>
+   
+	<insert id="write" parameterType="hashmap">
+     insert into board (userID,boardID,boardTitle,boardContent,boardDate,boardHit,boardFile,boadRealFile,boardGroup, BOARDSEQUENCE, boardLevel ) 
+	values (#{userID}, NVL((SELECT MAX(boardID)+1 FROM BOARD), 1), #{boardTitle}, 
+	#{boardContent}, sysdate, 0, #{boardFile},#{boardRealFile}, NVL((SELECT MAX(BOARDGROUP)+1 FROM BOARD), 0), 0, 0)
+   </insert>
+   	<insert id="reply" parameterType="BoardDTO">
+     insert into board (userID,boardID,boardTitle,boardContent,boardDate,boardHit,boardFile,boadRealFile,boardGroup, BOARDSEQUENCE, boardLevel ) 
+	values (#{userID}, NVL((SELECT MAX(boardID)+1 FROM BOARD), 1), #{boardTitle}, 
+	#{boardContent}, sysdate, 0, #{boardFile},#{boardRealFile}, #{parent.BOARDGROUP}, #{parent.BOARDSEQUENCE}, #{parent.BOARDLEVEL})
+   </insert>
+   
+     <insert id="replyUpdate" parameterType="BoardDTO">
+    	Update board set boardSequence = boardSequence + 1 where boardGroup = #{boardGroup} and boardSequence > #{boardSequence}
+   </insert>
+   
+   
+   <insert id="hit" parameterType="String">
+    UPDATE BOARD SET boardHit = boardHit + 1 where boardID = #{boardID}
+   </insert>
+   
+   
+   	<select id="getList" resultType="BoardDTO">
+    select * from board order by boardGroup DESC, boardSequence ASC
+
+   </select>
+   
+   <select id="getBoard" parameterType="int" resultType="BoardDTO">
+    select * from board where boardID = ${boardID}
+
+   </select>
+   
+   <select id="getUser" parameterType="string" resultType="UserDTO">
+    select * from userchat where userID = #{userID}
+
+   </select>
+   
+</mapper>
