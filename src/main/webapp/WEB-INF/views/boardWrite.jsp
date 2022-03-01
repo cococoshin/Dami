@@ -27,12 +27,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>	
-			<a class="navbar-brand" href="index.jsp">실시간 회원제 채팅 서비스</a>	
+			<a class="navbar-brand" href="index">실시간 회원제 채팅 서비스</a>	
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="index.jsp">메인</a>
-				<li class="active"><a href="boardView.jsp">자유게시판</a>
+				<li><a href="index">메인</a>
+				<li class="active"><a href="BoardView">자유게시판</a>
 			</ul>
 			<%
 				if(userID == null) {
@@ -69,7 +69,7 @@
 		</div>
 	</nav>
 	<div class="container">
-		<form method="post" action="./boardWrite"> <!-- enctype="multipart/form-data" -->
+		<form method="post" action="./BoardWrite"> <!-- enctype="multipart/form-data" -->
 			<table class="table table-boardered table-hober" style="text-align: center; border: 1-x solid #dddddd">
 				<thead>
 					<tr>

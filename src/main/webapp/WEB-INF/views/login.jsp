@@ -32,7 +32,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="index">메인</a>
-				<li class="active"><a href="boardView">자유게시판</a>
+				<li class="active"><a href="BoardView">자유게시판</a>
 			</ul>
 			<%
 				if(userID == null) {

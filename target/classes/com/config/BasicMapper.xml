@@ -22,13 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="write" parameterType="hashmap">
      insert into board (userID,boardID,boardTitle,boardContent,boardDate,boardHit,boardFile,boadRealFile,boardGroup, BOARDSEQUENCE, boardLevel ) 
 	values (#{userID}, NVL((SELECT MAX(boardID)+1 FROM BOARD), 1), #{boardTitle}, 
-	#{boardContent}, sysdate, 0, #{boardFile},#{boardRealFile}, NVL((SELECT MAX(BOARDGROUP)+1 FROM BOARD), 0), 0, 0)
+	#{boardContent}, sysdate, 0, #{boardFile},null, NVL((SELECT MAX(BOARDGROUP)+1 FROM BOARD), 0), 0, 0)
    </insert>
-   	<insert id="reply" parameterType="BoardDTO">
-     insert into board (userID,boardID,boardTitle,boardContent,boardDate,boardHit,boardFile,boadRealFile,boardGroup, BOARDSEQUENCE, boardLevel ) 
-	values (#{userID}, NVL((SELECT MAX(boardID)+1 FROM BOARD), 1), #{boardTitle}, 
-	#{boardContent}, sysdate, 0, #{boardFile},#{boardRealFile}, #{parent.BOARDGROUP}, #{parent.BOARDSEQUENCE}, #{parent.BOARDLEVEL})
-   </insert>
+
    
      <insert id="replyUpdate" parameterType="BoardDTO">
     	Update board set boardSequence = boardSequence + 1 where boardGroup = #{boardGroup} and boardSequence > #{boardSequence}
@@ -45,8 +41,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
    </select>
    
-   <select id="getBoard" parameterType="int" resultType="BoardDTO">
-    select * from board where boardID = ${boardID}
+   <select id="getBoard" parameterType="string" resultType="BoardDTO">
+    select * from board where boardID = #{boardID}
 
    </select>
    

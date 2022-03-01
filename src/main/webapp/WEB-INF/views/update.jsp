@@ -28,12 +28,14 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="index.jsp">메인</a>
-				<li class="active"><a href="boardView">자유게시판</a>
+				<li><a href="index">메인</a>
+				<li class="active"><a href="BoardView">자유게시판</a>
 			</ul>
 			<%
 			String userID = null;
 			UserDTO user = (UserDTO)session.getAttribute("login");
+			//System.out.println("Retrieve"+user.getUserID());
+
 			if(session.getAttribute("userID") !=null){
 				userID = (String)session.getAttribute("userID");
 				

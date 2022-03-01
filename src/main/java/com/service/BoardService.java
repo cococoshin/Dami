@@ -40,6 +40,7 @@ public class BoardService {
 	}
 	
 	public BoardDTO getBoard(String boardID) {
+		System.out.println("BoardService"+boardID);
 		BoardDTO dto = dao.getBoard(boardID);
 		return dto;
 	}

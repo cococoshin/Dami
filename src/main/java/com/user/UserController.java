@@ -1,5 +1,7 @@
 package com.user;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -7,9 +9,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.service.UserService;
 
@@ -27,6 +31,7 @@ public class UserController {
 		if (dto != null) {
 			String userID = dto.getUserID();
 			session.setAttribute("login", dto);
+			System.out.println("LOGIN"+userID);
 			session.setAttribute("userID", userID);
 			return "redirect:index";
 		} else {
@@ -53,4 +58,26 @@ public class UserController {
 		return "login";
 	} // MemberAdd end
 	
-}
+	
+	private final String uploadDir = "C:\\Users\\sungs\\OneDrive\\Desktop\\Path\\";
+	
+	@PostMapping("/userProfile")
+	public String userProfile(@RequestParam("userProfile") MultipartFile userProfile, HttpSession session) throws IOException{
+			String userID = (String)session.getAttribute("userID");
+			String filename= userProfile.getOriginalFilename();
+			String fullPath= uploadDir + filename;
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("userID", userID);
+			map.put("fileName", filename);
+			service.profile(map);
+			System.out.println(fullPath);
+			userProfile.transferTo(new File(fullPath));
+		return "index";
+		}
+		
+		
+	}
+	
+	
+	
+

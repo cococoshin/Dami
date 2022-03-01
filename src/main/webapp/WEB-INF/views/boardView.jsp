@@ -15,6 +15,7 @@
 	<title>JSP Ajax 실시간 회원제 채팅 서비스</title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<%
@@ -37,7 +38,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="index">메인</a>
-				<li class="active"><a href="boardView">자유게시판</a>
+				<li class="active"><a href="BoardView">자유게시판</a>
 			</ul>
 			<%
 				if(userID == null) {
@@ -69,7 +70,7 @@
 			<%
 				}
 	
-			List<BoardDTO> boardList = (List<BoardDTO>)session.getAttribute("boardList");
+			List<BoardDTO> boardList = (List<BoardDTO>)request.getAttribute("boardList");
 			%>
 			
 		</div>
@@ -89,18 +90,20 @@
 			</thead>
 			<tbody>
 			<%
+				int cnt = 0;
 				for(int i = 0; i< boardList.size();i++){
 					BoardDTO board = boardList.get(i);
-				
+					cnt++;
+					
 			%>
 			
 				<tr>
-					<td><%= board.getBoardID() %></td>
-					<td style="text-align: left;"><a href="boardShow.jsp?boardID=<%= board.getBoardID() %>">
+					<td><%= cnt %></td>
+					<td style="text-align: left;"><a href="boardShow?boardID=<%= board.getBoardID() %>">
 					<%
 						for(int j=0; j<board.getBoardLevel();j++) {
-					%>
-						<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+					%>					
+						&#10140;
 					<%		
 						}
 					%>
@@ -114,7 +117,7 @@
 				}
 				%>
 				<tr>
-					<td colspan="5"><a href="boardWrite.jsp" class="btn btn-parimary pull-right" type="submit">글쓰기</a>
+					<td colspan="5"><a href="boardWrite" class="btn btn-parimary pull-right" type="submit">글쓰기</a>
 				</tr>
 			</tbody>	
 		</table>

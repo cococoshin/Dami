@@ -84,6 +84,7 @@ public class BoardDAO {
 	}
 
 	public BoardDTO getBoard(String boardID) {
+		System.out.println("boardDAO"+boardID);
 		BoardDTO dto = template.selectOne("BasicMapper.getBoard", boardID);
 		return dto;
 	}

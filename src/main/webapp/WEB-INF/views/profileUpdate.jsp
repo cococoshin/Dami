@@ -20,9 +20,8 @@
 		if(session.getAttribute("userID") !=null){
 			userID = (String)session.getAttribute("userID");
 		}
-		UserDTO user = new UserDTO();
-		UserService service = new UserService();
-		user = service.getUser(userID);
+		UserDTO user = (UserDTO)session.getAttribute("login");
+
 	%>
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
@@ -33,12 +32,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>	
-			<a class="navbar-brand" href="index.jsp">실시간 회원제 채팅 서비스</a>	
+			<a class="navbar-brand" href="index">실시간 회원제 채팅 서비스</a>	
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="index">메인</a>
-				<li class="active"><a href="boardView">자유게시판</a>
+				<li class="active"><a href="BoardView">자유게시판</a>
 			</ul>
 			<%
 				if(userID == null) {

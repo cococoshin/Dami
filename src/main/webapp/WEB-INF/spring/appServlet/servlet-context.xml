@@ -25,6 +25,7 @@
 		
 	<mvc:view-controller path="/boardWrite"
 		view-name="boardWrite" />
+		
 	<mvc:view-controller path="/logoutAction"
 		view-name="logoutAction" />	
 
@@ -48,6 +49,8 @@
 
 	<context:component-scan base-package="com.*" />
 
+	<bean id="multipartResolver" 
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
 
 </beans>

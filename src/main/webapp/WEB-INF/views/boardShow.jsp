@@ -31,12 +31,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>	
-			<a class="navbar-brand" href="index.jsp">실시간 회원제 채팅 서비스</a>	
+			<a class="navbar-brand" href="index">실시간 회원제 채팅 서비스</a>	
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="index">메인</a>
-				<li class="active"><a href="boardView">자유게시판</a>
+				<li class="active"><a href="BoardView">자유게시판</a>
 			</ul>
 			<%
 				if(userID == null) {
@@ -95,27 +95,32 @@
 				<tr>
 					<td style="background-color: #fafafa; color:#000000; width: 80px;"><h5>작성날짜</h5></td>
 					<td colspan="3"><h5>${boardShow.boardDate }</h5></td>
-				</tr>		
+				</tr>			
 				<tr>
 					<td style="background-color: #fafafa; color:#000000; width: 80px;"><h5>조회수</h5></td>
 					<td colspan="3"><h5>${boardShow.boardHit }</h5></td>
 				</tr>	
 				<tr>
 					<td style="vertical-align: middle; min-height: 150px; background-color: #fafafa; color:#000000; width: 80px;"><h5>글 내용</h5></td>
-					<td colspan="3" style="text-align: left;"><h5${boardShow.boardContent }></h5></td>
+					<td colspan="3" style="text-align: left;"><h5>${boardShow.boardContent }</h5></td>
 				</tr>
 					<tr>
 					<td style="background-color: #fafafa; color:#000000; width: 80px;"><h5>첨부파일</h5></td>
 					<td colspan="3"><h5><a href = "boardDownload.jsp?boardID=${boardShow.boardID }">${boardShow.boardFile }</h5></td>
+				</tr>	
+					</tr>		
+				<tr>
+					<td style="background-color: #fafafa; color:#000000; width: 80px;"><h5>게시글ID</h5></td>
+					<td colspan="3"><h5>${boardShow.boardID }</h5></td>
 				</tr>				
 			</thead>
 			<tbody>
 		
 				<tr>
 					<td colspan="5" style="text-align: right;">
-					<a href="boardUpdate.jsp?boardID=${boardShow.boardID }" class="btn btn-primary" type="submit">수정</a>
-					<a href="boardView.jsp" class="btn btn-primary">목록</a>
-					<a href="boardReply.jsp?boardID=${boardShow.boardID }" class="btn btn-primary">답변</a>
+					<a href="boardUpdate?boardID=${boardShow.boardID }" class="btn btn-primary" type="submit">수정</a>
+					<a href="boardView" class="btn btn-primary">목록</a>
+					<a href="boardReply?boardID=${boardShow.boardID }" class="btn btn-primary">답변</a>
 					
 				</tr>
 			</tbody>	

@@ -18,6 +18,9 @@
 			userID = (String)session.getAttribute("userID");
 		}
 		String boardID = (String)request.getParameter("boardID");
+		System.out.println("REPLLLY"+boardID);
+		
+
 	%>
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
@@ -33,7 +36,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="index">메인</a>
-				<li class="active"><a href="boardView">자유게시판</a>
+				<li class="active"><a href=BoardView>자유게시판</a>
 			</ul>
 			<%
 				if(userID == null) {
@@ -70,7 +73,7 @@
 		</div>
 	</nav>
 	<div class="container">
-		<form method="post" action="./boardReply"> <!-- enctype="multipart/form-data" -->
+		<form method="post" action="./boardReply1"> <!-- enctype="multipart/form-data" -->
 			<table class="table table-boardered table-hober" style="text-align: center; border: 1-x solid #dddddd">
 				<thead>
 					<tr>
