@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ page import = "user.UserDTO" %>
-<%@ page import = "user.UserDAO" %>
-<%@ page import = "com.service.UserService" %> --%>
+<%@ page import = "com.user.UserDTO" %>
+<%@ page import = "com.user.UserDAO" %>
+<%@ page import = "com.service.UserService" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,16 +88,16 @@
 					<div id="chat" class="panel-collapse collapse in">
 						<div id = "chatlist" class="portlet-body chat-widget" style="overflow-y:auto; width: auto; height: 600px;">
 						<%
-				if(userID == null) {
-				}else{
-					/* UserDTO user = new UserDTO();
-					UserService service = new UserService();
-					user = service.getUser(userID);
-					String profile = user.getUserProfile(); */
+				if(userID != null) {			
+					UserDTO user = (UserDTO)session.getAttribute("login");					
+					String profile = user.getUserProfile();
 				%>
 			
-					<%-- MyProfile
-					<img src="http://localhost:8095/User_Chat/upload/<%= profile %>">  --%>
+					MyProfile <br><br>
+					<%= user.getUserProfile() %><br>
+					<img src="C:\\eclipse\\JAVA\\Java student\\eclipse\\STS_SUNG\\WORKSPACE\\Board\\src\\main\\webapp\\WEB-INF\\views\\img\\<%= user.getUserProfile() %>">
+					
+					
 					<%}%>
 						
 						

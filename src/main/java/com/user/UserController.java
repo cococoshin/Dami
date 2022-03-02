@@ -59,19 +59,23 @@ public class UserController {
 	} // MemberAdd end
 	
 	
-	private final String uploadDir = "C:\\Users\\sungs\\OneDrive\\Desktop\\Path\\";
+	private final String uploadDir = "C:\\eclipse\\JAVA\\Java student\\eclipse\\STS_SUNG\\WORKSPACE\\Board\\src\\main\\webapp\\WEB-INF\\views\\img\\";
 	
 	@PostMapping("/userProfile")
 	public String userProfile(@RequestParam("userProfile") MultipartFile userProfile, HttpSession session) throws IOException{
 			String userID = (String)session.getAttribute("userID");
 			String filename= userProfile.getOriginalFilename();
 			String fullPath= uploadDir + filename;
+			userProfile.transferTo(new File(fullPath));
+			System.out.println(fullPath);
+			
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put("userID", userID);
 			map.put("fileName", filename);
 			service.profile(map);
-			System.out.println(fullPath);
-			userProfile.transferTo(new File(fullPath));
+			UserDTO dto = service.getUser(userID);
+			session.setAttribute("login", dto);
+			
 		return "index";
 		}
 		
