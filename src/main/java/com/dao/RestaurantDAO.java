@@ -34,7 +34,10 @@ public class RestaurantDAO {
 		return recommendResList;
 	}
 	
-	
+	public RestaurantDTO resInfo(String restaurant) {
+		RestaurantDTO dto = template.selectOne("RestaurantMapper.resInfo", restaurant);
+		return dto;
+	}
 	
 	
 	

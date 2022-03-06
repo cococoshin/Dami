@@ -35,7 +35,10 @@ public class RestaurantService {
 		return recommendResList;
 	}
 	
-	
+	public RestaurantDTO resInfo(String restaurant) {
+		RestaurantDTO dto = dao.resInfo(restaurant);
+		return dto;
+	}
 	
 	
 	

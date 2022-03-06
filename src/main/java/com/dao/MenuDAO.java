@@ -41,7 +41,10 @@ public class MenuDAO {
 		return resRecommend;
 	}
 
-	
+	public List<MenuDTO> menuInfo(String restaurant) {
+		List<MenuDTO> list =template.selectList("MenuMapper.menuInfo", restaurant);
+		return list;
+	}
 	
 	
 	

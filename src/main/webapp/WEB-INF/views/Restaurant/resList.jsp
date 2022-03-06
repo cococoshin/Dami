@@ -62,7 +62,7 @@ alert("<%=mesg%>");
 								</tr>
 								<tr>
 									<td  align ="center">
-										 <a class= "a_black" href="#"> 
+										 <a class= "a_black" href="resInfo?restaurant=<%= restaurant%>"> 
 										<%= restaurant%><br>
 										</a>
 										<font color="gray">

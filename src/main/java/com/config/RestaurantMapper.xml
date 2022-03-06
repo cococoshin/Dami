@@ -33,5 +33,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="recommendResList" parameterType="string" resultType="RestaurantDTO">
    select * from restaurant where restaurant = #{resRecommend}
    </select>
+   
+	
+	<select id="resInfo" parameterType="string" resultType="RestaurantDTO">
+	select restaurant, phone1, phone2, phone3, addr1, addr2,
+				  image, category, price, parking, menu, time, breaktime, mood 
+	from restaurant
+	where restaurant = #{restaurant}
+	</select>
+   
 	
 </mapper>

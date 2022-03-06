@@ -42,7 +42,10 @@ public class MenuService {
 		return resRecommend;
 	}
 
-
+	public List<MenuDTO> menuInfo(String restaurant) {
+		List<MenuDTO> list = dao.menuInfo(restaurant);
+		return list;
+	}
 	
 
 	

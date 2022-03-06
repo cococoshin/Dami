@@ -42,7 +42,7 @@
 			<td>
 				<table>
 					<tr>
-						<td align="center"><a href="?restaurant=<%=rRestaurant%>">
+						<td align="center"><a href="resInfo?restaurant=<%= rRestaurant%>">
 								<!-- 이미지 클릭시 상세페이지로 이동 -->
 								<div class="scale">
 									<img src="images/resImages/<%=rImage%>.jpg" width="200"
@@ -54,7 +54,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td align="center"><a class="aReview" href="?restaurant=<%=rRestaurant%>"><%=rRestaurant %></a>
+						<td align="center"><a class="aReview" href="resInfo?restaurant=<%= rRestaurant%>"><%=rRestaurant %></a>
 						<!-- 상세페이지로 이동 --></td>
 					</tr>
 				</table>

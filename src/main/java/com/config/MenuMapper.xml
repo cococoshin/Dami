@@ -53,6 +53,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getMenuImage" parameterType="String" resultType="String">
 		select image from menu where menu = #{menuFinal}
 	</select>
-	
+	<select id="menuInfo" parameterType="String" resultType="MenuDTO">
+		select menu, price
+		from menu
+		where restaurant =#{restaurant}
+	</select> 
 	   
 </mapper>

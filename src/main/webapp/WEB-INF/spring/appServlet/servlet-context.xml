@@ -19,6 +19,7 @@
 	<mvc:view-controller path="/menuResult" view-name="menuResult"/>
 	
 	<mvc:view-controller path="/myPage" view-name="myPage"/>
+	<mvc:view-controller path="/resInfo" view-name="resInfo"/><!--가게 정보 -->
 	<mvc:view-controller path="/memberForm" view-name="memberForm"/>
 	<mvc:view-controller path="/IdCheckForm" view-name="member/IdCheckForm"/> <!-- 자식창 open -->
 	<mvc:view-controller path="/emailCheckForm" view-name="member/emailCheckForm"/> <!-- 자식창 open -->
